@@ -1,7 +1,7 @@
 const express = require('express')
 const request = require ('request')
 const router = express.Router()
-
+//redirect to catalog server
 router.use('/books/info/:id', async(req, res)=>{
     const id = req.params.id
     const url = 'http://10.211.55.3/books/info/'+id
@@ -12,7 +12,7 @@ router.use('/books/info/:id', async(req, res)=>{
            return res.status(200).send(body)
         })
 })
-
+//redirect to catalog server
 router.use('/books/search/:topic', (req, res)=>{
     const topic = req.params.topic
     const url = 'http://10.211.55.3/books/search/'+topic
@@ -23,6 +23,7 @@ router.use('/books/search/:topic', (req, res)=>{
            return res.status(200).send(body)
         })
 })
+
 router.patch('/books/:id', (req, res)=>{
     const id = req.params.id
     const url = 'http://10.211.55.3/books/'+id
@@ -33,6 +34,8 @@ router.patch('/books/:id', (req, res)=>{
            return res.status(200).send(body)
         })
 })
+
+//redirect to order server
 router.use('/books/purchase/:id', (req, res)=>{
     const id = req.params.id
     const url = 'http://10.211.55.4/books/purchase/'+id
