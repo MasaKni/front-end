@@ -37,13 +37,13 @@ router.patch('/books/:id', (req, res)=>{
 
 //redirect to order server
 router.use('/books/purchase/:id', (req, res)=>{
+    console.log("purchase request in process");
     const id = req.params.id
     const url = 'http://192.168.56.101:3001/books/purchase/'+id
     request({url, json:true}, (error, {body})=>{
         if(error){
             return res.send(error)
         }
-        console.log(body)
         return res.status(200).send(body)
     })
 })
