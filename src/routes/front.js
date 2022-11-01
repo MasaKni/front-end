@@ -3,6 +3,7 @@ const request = require ('request')
 const router = express.Router()
 //redirect to catalog server
 router.use('/books/info/:id', async(req, res)=>{
+    console.log("search request in process");
     const id = req.params.id
     const url = 'http://192.168.56.101:3000/books/info/'+id
     request({url, json:true}, (error,  {body})=>{
@@ -14,6 +15,7 @@ router.use('/books/info/:id', async(req, res)=>{
 })
 //redirect to catalog server
 router.use('/books/search/:topic', (req, res)=>{
+    console.log("search request in process");
     const topic = req.params.topic
     const url = 'http://192.168.56.101:3000/books/search/'+topic
     request({url, json:true}, (error,  {body})=>{
@@ -25,6 +27,7 @@ router.use('/books/search/:topic', (req, res)=>{
 })
 //catalog
 router.patch('/books/:id', (req, res)=>{
+    console.log("update request in process");
     const id = req.params.id
     const url = 'http://192.168.56.101:3000/books/'+id
     request({url, json:true, method: 'PATCH', body: req.body}, (error,  {body})=>{
